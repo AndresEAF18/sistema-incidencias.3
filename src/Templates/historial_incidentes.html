@@ -1,0 +1,60 @@
+<!DOCTYPE html>  
+<html lang="es">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Historial de Incidentes</title>  
+    <link rel="stylesheet" href="/incidencias/assets/css/tablas.css">  
+</head>  
+<body>  
+  
+<div class="topbar">  
+    <div class="logo">Sistema de Incidencias</div>  
+    <div class="actions">  
+        <a href="panel_usuario.php" class="btn-volver">Volver al Panel</a>  
+    </div>  
+</div>  
+  
+<h2 class="titulo">Historial de Incidentes</h2>  
+  
+<form method="GET" class="filtros-incidentes">  
+    <select name="estado">  
+        <option value="">Todos los estados</option>  
+        <option value="Pendiente" {{estadoSeleccionado=='Pendiente'?'selected':''}}>Pendiente</option>  
+        <option value="En proceso" {{estadoSeleccionado=='En proceso'?'selected':''}}>En proceso</option>  
+        <option value="Resuelto" {{estadoSeleccionado=='Resuelto'?'selected':''}}>Resuelto</option>  
+    </select>  
+  
+    <select name="categoria">  
+        <option value="">Todas las categorías</option>  
+        {{optionsCategorias}}  
+    </select>  
+  
+    <input type="date" name="fecha_desde" value="{{fechaDesde}}">  
+    <input type="date" name="fecha_hasta" value="{{fechaHasta}}">  
+  
+    <button type="submit">Filtrar</button>  
+    <a href="historial_incidentes.php" class="btn-limpiar">Limpiar</a>  
+</form>  
+  
+<div class="contenedor-tabla">  
+    <table class="tabla-incidentes">  
+        <thead>  
+            <tr>  
+                <th>ID</th>  
+                <th>Título</th>  
+                <th>Categoría</th>  
+                <th>Subcategoría</th>  
+                <th>Estado</th>  
+                <th>Fecha</th>  
+                <th>Responsable</th>  
+                <th>Acciones</th>  
+            </tr>  
+        </thead>  
+        <tbody>  
+            {{tablaIncidentes}}  
+        </tbody>  
+    </table>  
+</div>  
+  
+</body>  
+</html>

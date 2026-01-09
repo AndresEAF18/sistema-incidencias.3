@@ -1,0 +1,232 @@
+/* ==========================
+   ESTILO GENERAL
+========================== */
+body {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    background: #f6f7f8;
+    color: #111;
+}
+
+/* ==========================
+   TOPBAR
+========================== */
+.topbar {
+    width: 98%;
+    height: 90px;
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.topbar .logo {
+    font-size: 32px;
+    font-weight: 1000;
+}
+
+.topbar .actions a {
+    background: #111418;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s;
+
+}
+
+.topbar .actions a:hover {
+    background: white;
+    color: #111418;
+    border: 1px solid #111418;
+}
+
+/* ==========================
+   TÍTULO PRINCIPAL
+========================== */
+.titulo {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 32px;
+    font-weight: 800;
+    color: #111418;
+}
+
+/* ==========================
+   TABLA
+========================== */
+.contenedor-tabla {
+    width: 95%;
+    margin: 30px auto;
+    overflow-x: auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.tabla-incidentes {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 17px;
+    margin: 0 auto;
+}
+
+/* HEAD */
+.tabla-incidentes thead th {
+    background: #f0f2f5;
+    padding: 14px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid #d9dde3;
+    text-align: center;
+}
+
+
+/* FILAS */
+.tabla-incidentes tbody tr {
+    transition: 0.2s;
+}
+
+.tabla-incidentes tbody tr:nth-child(even) {
+    background: #fafafa;
+}
+
+.tabla-incidentes tbody tr:hover {
+    background: #eef2f6;
+}
+
+/* CELDAS */
+.tabla-incidentes td, 
+.tabla-incidentes th {
+    padding: 15px 9px; /* Más compacto */
+     width: 130px; /* Ajusta aquí */
+    text-align: center;
+}
+
+/* ==========================
+   BOTÓN DE DETALLES
+========================== */
+.btn-detalle {
+    background: #111418;
+    color: white;
+    padding: 9px 14px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.btn-detalle:hover {
+    background: white;
+    color: #111418;
+    border: 1px solid #111418;
+}
+
+.mas-icono {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: white;
+    color: #111418;
+    border-radius: 50%;
+    font-weight: 900;
+    line-height: 18px;
+    text-align: center;
+    margin-right: 6px;
+}
+
+/* ==============================
+   FILTROS DE INCIDENTES
+============================== */
+.filtros-incidentes {
+    width: 55%;
+    margin: 20px auto 25px auto;
+    padding: 16px 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Inputs y select */
+.filtros-incidentes select,
+.filtros-incidentes input[type="date"],
+.filtros-incidentes input[type="text"] {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+    font-family: "Inter", sans-serif;
+    min-width: 170px;
+    transition: 0.2s;
+}
+
+/* Campo de búsqueda más ancho */
+.filtros-incidentes input[type="text"] {
+    min-width: 230px;
+}
+
+/* Hover & focus */
+.filtros-incidentes select:focus,
+.filtros-incidentes input:focus {
+    outline: none;
+    border-color: #000;
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.08);
+}
+
+/* Botones: mismo tamaño de letra */
+.filtros-incidentes button,
+.btn-limpiar {
+    font-size: 14px;
+}
+
+/* Botón filtrar */
+.filtros-incidentes button {
+    padding: 10px 20px;
+    background: #000;
+    color: #fff;
+    border: 2px solid #000;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+/* Hover filtrar → blanco */
+.filtros-incidentes button:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* Botones filtros */
+.filtros-incidentes button,
+.btn-limpiar {
+    padding: 10px 20px;
+    font-size: 14px;
+    background: #000;
+    color: #fff;
+    border: 2px solid #000;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.25s ease;
+}
+
+/* Hover ambos botones */
+.filtros-incidentes button:hover,
+.btn-limpiar:hover {
+    background: #fff;
+    color: #000;
+}

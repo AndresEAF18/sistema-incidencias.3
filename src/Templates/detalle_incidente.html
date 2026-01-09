@@ -1,0 +1,58 @@
+<!DOCTYPE html>  
+<html lang="es">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Detalle del Incidente #{{idIncidente}}</title>  
+    <link rel="stylesheet" href="/incidencias/assets/css/detalle_incidente.css">  
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">  
+</head>  
+<body>  
+  
+<div class="card">  
+    <h3>Resumen del Incidente</h3>  
+    <h3 class="titulo-incidente">{{titulo}}</h3>  
+  
+    <div class="narrativa">  
+        <p>• Descripción: <strong> {{descripcion}} </strong></p>  
+        <div class="info-grid">  
+            <div class="info-item">• Categoría: <strong>{{categoria}}</strong></div>  
+            <div class="info-item">• Subcategoría: <strong>{{subcategoria}}</strong></div>  
+            <div class="info-item">• Fecha: <strong>{{fechaRegistro}}</strong></div>  
+            <div class="info-item">• Prioridad:   
+                <span class="badge-prioridad prio-{{idPrioridad}}">  
+                    {{textoPrioridad}}  
+                </span>  
+            </div>  
+        </div>  
+  
+        <div id="map" style="height:250px; width:100%; margin:15px 0; border-radius: 8px;"></div>  
+          
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>  
+        <script>  
+            var map = L.map('map').setView([{{lat}}, {{lng}}], 15);  
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);  
+            L.marker([{{lat}}, {{lng}}]).addTo(map);  
+        </script>  
+    </div>  
+  
+    <hr>  
+  
+    <h3 class="titulo-responsable">Seguimiento en Tiempo Real</h3>  
+  
+    <div class="estado-box estado-{{estado|lower|replace(' ', '-')}}">  
+          
+        <p style="font-size: 1.1em;"><strong>Responsable Asignado:</strong> {{responsable}}</p>  
+        <p style="font-size: 1.2em;"><strong>Estado Actual:</strong> <span class="badge-estado">{{estado}}</span> </p>  
+  
+        <hr style="opacity: 0.2;">  
+  
+        <!-- El contenido específico del estado se procesará en el controller -->  
+        {{contenidoEstado}}  
+    </div>  
+  
+    <a class="btn" href="historial_incidentes.php" style="display: block; text-align: center;">Volver al Historial</a>  
+</div>  
+  
+</body>  
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>  
+<html lang="es">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Panel Responsable - Sistema de Incidencias</title>  
+    <link rel="stylesheet" href="/incidencias/assets/css/paneles.css">  
+</head>  
+<body>  
+  
+<div class="topbar">  
+    <div class="logo">Sistema de Incidencias</div>  
+    <div class="actions">  
+        <a href="notificaciones_responsable.php" class="notif" style="position: relative;">  
+            <img src="/incidencias/assets/img/notificacion.png" alt="Notificaciones">  
+            <span id="badgeNotificaciones">{{notificacionesNoLeidas}}</span>  
+        </a>  
+        <a href="/incidencias/src/Controllers/logout.php" class="logout">Cerrar sesión</a>  
+    </div>  
+</div>  
+  
+<div class="container">  
+    <h2 class="titulo-bienvenido">Bienvenido, Agente {{nombre}}</h2>  
+    <div class="separador"></div>  
+    <div class="botones-panel">  
+        <a href="incidentes_asignados.php" class="btn-panel">  
+            <img src="/incidencias/assets/img/incidentes.png" alt="Icono"> Visualizar Incidentes Asignados  
+        </a>  
+    </div>  
+</div>  
+  
+<div class="card-container">  
+    <div class="card">  
+        <h3>Incidentes Asignados</h3>  
+        <p class="numero" style="color: #1417aa;">{{totalAsignadas}}</p>  
+    </div>  
+    <div class="card">  
+        <h3>Incidentes Pendientes</h3>  
+        <p class="numero" style="color: #e67e22;">{{totalPendientes}}</p>  
+    </div>  
+    <div class="card">  
+        <h3>Incidentes Resueltos</h3>  
+        <p class="numero" style="color: #2aaf2a;">{{totalResueltas}}</p>  
+    </div>  
+    <div class="card">  
+        <h3>Porcentaje de Resolución</h3>  
+        <p class="numero">{{porcentajeResolucion}}%</p>  
+    </div>  
+</div>  
+  
+<div class="panel-grafica-layout">  
+    <div class="mini-panel">  
+        <h3>Últimos incidentes asignados</h3>  
+        <table>  
+            <thead>  
+                <tr>  
+                    <th>Título</th>  
+                    <th>Estado</th>  
+                    <th>Fecha</th>  
+                </tr>  
+            </thead>  
+            <tbody>  
+                {{tablaIncidentes}}  
+            </tbody>  
+        </table>  
+        <div class="mini-panel-btn">  
+            <a href="incidentes_asignados.php">Ver todos</a>  
+        </div>  
+    </div>  
+    <div class="graficas-layout">  
+        <div class="grafica-card adicionales">  
+            <h3>Comparativa Mensual</h3>  
+            <canvas id="grafMensual"></canvas>  
+        </div>  
+        <div class="grafica-card adicionales">  
+            <h3>Asignados (Últimos 7 Días)</h3>  
+            <canvas id="graficoAsignadosDia"></canvas>  
+        </div>  
+        <div class="grafica-card">  
+            <h3>Eficiencia Global</h3>  
+            <canvas id="grafEficienciaGlobal"></canvas>  
+        </div>  
+    </div>  
+</div>  
+  
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  
+<script>  
+    // Gráfica Comparativa Mensual  
+    new Chart(document.getElementById('grafMensual'), {  
+        type: 'line',  
+        data: {  
+            labels: {{meses}},  
+            datasets: [{  
+                label: 'Incidencias',  
+                data: {{valoresMes}},  
+                backgroundColor: 'rgba(75, 115, 141, 0.2)',  
+                borderColor: 'rgba(29, 184, 171, 1)',  
+                borderWidth: 2,  
+                fill: true,  
+                tension: 0.3  
+            }]  
+        }  
+    });  
+  
+    // Incidentes asignados últimos 7 días  
+    new Chart(document.getElementById('graficoAsignadosDia'), {  
+        type: 'bar',  
+        data: {  
+            labels: {{fechas}},  
+            datasets: [{  
+                label: 'Asignados',  
+                data: {{totales}},  
+                backgroundColor: 'rgba(29,184,171,0.7)'  
+            }]  
+        }  
+    });  
+  
+    // Eficiencia Global  
+    const eficiencia = {{eficienciaGlobal}};  
+    let color;  
+    if (eficiencia >= 100) {  
+        color = 'rgba(46, 204, 113, 0.9)';  
+    } else if (eficiencia >= 70) {  
+        color = 'rgba(241, 196, 15, 0.9)';  
+    } else {  
+        color = 'rgba(231, 76, 60, 0.9)';  
+    }  
+  
+    new Chart(document.getElementById('grafEficienciaGlobal'), {  
+        type: 'bar',  
+        data: {  
+            labels: ['Eficiencia Global'],  
+            datasets: [{  
+                data: [Math.min(eficiencia, 100)],  
+                backgroundColor: [color],  
+                borderRadius: 8  
+            }]  
+        },  
+        options: {  
+            responsive: true,  
+            scales: {  
+                y: {  
+                    beginAtZero: true,  
+                    max: 100,  
+                    ticks: {  
+                        callback: function(value) {  
+                            return value + '%';  
+                        }  
+                    }  
+                }  
+            }  
+        }  
+    });  
+</script>  
+  
+</body>  
+</html>

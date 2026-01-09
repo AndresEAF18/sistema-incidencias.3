@@ -1,0 +1,260 @@
+/* =========================================
+   ESTILOS GENERALES Y CUERPO
+   ========================================= */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+    background: #f5f6f7;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.card {
+    width: 70%;
+    background: #ffffff;
+    padding: 35px;
+    margin: 40px 0;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin: 25px 0;
+}
+
+/* =========================================
+   TÍTULOS Y NARRATIVA
+   ========================================= */
+.titulo-incidente {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #000000;
+}
+
+.titulo-responsable {
+    font-size: 24px;
+    font-weight: 800;
+    margin-top: 35px;
+    color: #000000;
+}
+
+.narrativa {
+    background: #f9fafb;
+    padding: 25px;
+    border-radius: 14px;
+    border-left: 4px solid #111418;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.narrativa p {
+    font-size: 16px;
+    margin-bottom: 12px;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* =========================================
+   ESTILOS ESPECÍFICOS SEGUIMIENTO USUARIO
+   ========================================= */
+.estado-box { 
+    padding: 20px; 
+    border-radius: 12px; 
+    margin-bottom: 20px; 
+    border-left: 6px solid #ccc; 
+    background: #f9f9f9; 
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Colores dinámicos por estado */
+.estado-pendiente { border-left-color: #007bff; background: #e7f3ff; }
+.estado-en-proceso { border-left-color: #17a2b8; background: #e1f5f7; }
+.estado-no-resuelto { border-left-color: #ffc107; background: #fff9e6; }
+.estado-resuelto { border-left-color: #28a745; background: #e9f7ef; }
+
+.info-grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 15px; 
+    margin-top: 15px; 
+}
+
+.info-item { 
+    font-size: 0.95em; 
+    color: #000000;
+}
+
+.btn-acta { 
+    background: #28a745; 
+    color: white; 
+    padding: 12px 18px; 
+    text-decoration: none; 
+    border-radius: 8px; 
+    display: inline-block; 
+    margin-top: 10px; 
+    font-weight: bold; 
+    transition: background 0.3s;
+}
+
+.btn-acta:hover {
+    background: #218838;
+}
+
+/* =========================================
+   BADGES (PRIORIDAD Y ESTADO)
+   ========================================= */
+.badge-prioridad {
+    padding: 4px 10px;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* Soporte para clases prio-X y prioridad-X */
+.prioridad-1, .prio-1 { background: #d9534f; }
+.prioridad-2, .prio-2 { background: #f0ad4e; }
+.prioridad-3, .prio-3 { background: #5bc0de; }
+
+.badge-estado {
+    background: #111418;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+/* =========================================
+   FORMULARIO Y SECCIONES DINÁMICAS
+   ========================================= */
+.form-responsable {
+    margin-top: 20px;
+}
+
+.grupo-vertical {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+
+.grupo-vertical label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #000000;
+}
+
+.grupo-vertical input, 
+.grupo-vertical textarea, 
+.grupo-vertical select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.bloque-estado {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background: #fff;
+    margin: 15px 0;
+    border-left: 4px solid #111418;
+}
+
+.titulo-seccion {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #111418;
+}
+
+/* =========================================
+   ESTADOS DE BLOQUEO Y MENSAJES
+   ========================================= */
+.mensaje-bloqueo {
+    background: #fff3cd;
+    color: #856404;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ffeeba;
+    text-align: center;
+    font-weight: bold;
+}
+
+input:disabled, textarea:disabled, select:disabled {
+    background-color: #f0f0f0 !important;
+    color: #777;
+    cursor: not-allowed;
+}
+
+/* =========================================
+   BOTONES
+   ========================================= */
+/* Botón Guardar / Actualizar */
+.btn-guardar {
+    padding: 14px;
+    border: 2px solid #111418;
+    background: #111418;
+    color: white;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.btn-guardar:hover:not(:disabled) {
+    background-color: #ffffff;
+    color: #111418;
+}
+
+/* Botón Reabrir */
+.btn-reabrir {
+    background: #dc3545;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    width: 100%;
+    transition: 0.3s;
+}
+
+.btn-reabrir:hover {
+    background: #a71d2a;
+}
+
+/* Botón Volver (Negro a Blanco) */
+.btn {
+    display: inline-block;
+    background-color: #111418;
+    color: #ffffff;
+    padding: 12px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 10px;
+    border: 2px solid #111418;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #ffffff;
+    color: #111418;
+}
+
+/* =========================================
+   MAPA
+   ========================================= */
+#map {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}

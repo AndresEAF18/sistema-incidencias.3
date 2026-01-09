@@ -1,0 +1,164 @@
+<!DOCTYPE html>  
+<html lang="es">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Gestión Profesional de Incidentes</title>  
+    <link rel="stylesheet" href="/incidencias/assets/css/detalle_incidente.css">  
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />  
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>  
+</head>  
+<body>  
+  
+<div class="card">  
+    <h3 class="titulo-incidente">Resumen del Incidente: {{titulo}}</h3>  
+  
+    <script>  
+        if ({{mostrarMensajeBloqueo}}) {  
+            document.write('<div class="mensaje-bloqueo">⚠ Este incidente ha sido RESUELTO.</div>');  
+        }  
+    </script>  
+  
+    <div class="narrativa">  
+        <p>• <strong>Descripción del Reporte:</strong> {{descripcion}}</p>  
+        <p>• <strong>Categoría:</strong> {{categoria}}</p>  
+        <p>• <strong>Subcategoría:</strong> {{subcategoria}}</p>  
+        <p>• <strong>Reportado por:</strong> {{usuario}}</p>  
+        <p>• <strong>Ubicación:</strong> {{ubicacion}}</p>  
+          
+        <div id="map" style="height:250px; width:100%; margin: 15px 0; border-radius: 8px;"></div>  
+          
+        <script>  
+            var map = L.map('map').setView([{{lat}}, {{lng}}], 15);  
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);  
+            L.marker([{{lat}}, {{lng}}]).addTo(map);  
+        </script>  
+  
+        <p>• <strong>Prioridad de Sistema:</strong>   
+            <span class="badge-prioridad prioridad-{{idPrioridad}}">  
+                {{textoPrioridad}}  
+            </span>  
+        </p>  
+        <p>• <strong>Estado actual:</strong> <strong class="badge-estado">{{estado}}</strong></p>  
+    </div>  
+  
+    <hr>  
+  
+    <h3 class="titulo-responsable">Gestión Operativa del Responsable</h3>  
+  
+    <form class="form-responsable" method="POST" enctype="multipart/form-data" action="../Controllers/detalle_incidente_logica_responsable.php?id={{idIncidente}}">  
+  
+        <div class="grupo-vertical">  
+            <label>Actualizar Estado del Incidente</label>  
+            <select name="estado" id="estadoSelector" onchange="actualizarInterfaz()" required {{atributoBloqueo}}>  
+                <option value="Pendiente">Pendiente (Recepción)</option>  
+                <option value="En Proceso">En Proceso (Intervención)</option>  
+                <option value="No Resuelto">No Resuelto (Bloqueado)</option>  
+                <option value="Resuelto">Resuelto (Cierre)</option>  
+            </select>  
+        </div>  
+  
+        <div id="sec_pendiente" class="bloque-estado">  
+            <h4 class="titulo-seccion">Confirmación de Recepción</h4>  
+            <div class="grupo-vertical">  
+                <label>Comentario Inicial</label>  
+                <textarea name="comentario" rows="2" {{readonlyBloqueo}} {{atributoBloqueo}}>{{comentario}}</textarea>  
+            </div>  
+        </div>  
+  
+        <div id="sec_proceso" class="bloque-estado">  
+            <h4 class="titulo-seccion">Intervención en Campo</h4>  
+            <div class="grupo-vertical">  
+                <label>Agente / Operativo Encargado</label>  
+                <input type="text" name="agente_encargado" value="{{agente_encargado}}" {{readonlyBloqueo}} {{atributoBloqueo}}>  
+            </div>  
+            <div class="grupo-vertical">  
+                <label>Identificación de Unidad</label>  
+                <input type="text" name="unidad_id" value="{{unidad_id}}" {{readonlyBloqueo}} {{atributoBloqueo}}>  
+            </div>  
+            <div class="grupo-vertical">  
+                <label>Acciones en Ejecución</label>  
+                <textarea name="accionRealizada" rows="3" {{readonlyBloqueo}} {{atributoBloqueo}}>{{accionRealizada}}</textarea>  
+            </div>  
+        </div>  
+  
+        <div id="sec_no_resuelto" class="bloque-estado">  
+            <h4 class="titulo-seccion">Incidente No Solucionado</h4>  
+            <div class="grupo-vertical">  
+                <label>Motivo del Incumplimiento</label>  
+                <select name="motivoPausa" {{atributoBloqueo}}>  
+                    <option value="Falta de Recursos">Falta de Recursos / Equipos</option>  
+                    <option value="Zona Insegura">Inseguridad en el Perímetro</option>  
+                    <option value="Condiciones Climaticas">Clima Adverso</option>  
+                </select>  
+            </div>  
+            <div class="grupo-vertical">  
+                <label>Justificación Detallada</label>  
+                <textarea name="observacionesFinales" rows="3" {{readonlyBloqueo}} {{atributoBloqueo}}>{{observacionesFinales}}</textarea>  
+            </div>  
+        </div>  
+  
+        <div id="sec_resuelto" class="bloque-estado">  
+            <h4 class="titulo-sección">Finalización y Archivo</h4>  
+            <div class="grupo-vertical">  
+                <label>Solución Definitiva</label>  
+                <textarea name="resultadoObtenido" rows="3" {{readonlyBloqueo}} {{atributoBloqueo}}>{{resultadoObtenido}}</textarea>  
+            </div>  
+            <div class="grupo-vertical">  
+                <label>Tiempo de Resolución Empleado</label>  
+                <input type="text" name="tiempoResolucion" value="{{tiempoResolucion}}" {{readonlyBloqueo}} {{atributoBloqueo}}>  
+            </div>  
+            <div class="grupo-vertical">  
+                <label style="color:red; font-weight:bold;">Acta Policial</label>  
+                <input type="file" name="acta_documento" {{atributoBloqueo}}>  
+                <script>  
+                    if ('{{acta_ruta}}' !== '') {  
+                        document.write('<a href="{{acta_ruta}}" target="_blank">📄 Ver documento cargado</a>');  
+                    }  
+                </script>  
+            </div>  
+        </div>  
+  
+        <script>  
+            if ({{mostrarBotonActualizar}}) {  
+                document.write('<button class="btn-guardar" type="submit" style="width:100%; margin-top:10px;">Actualizar Incidente</button>');  
+            } else {  
+                document.write('<button class="btn-guardar" type="button" style="width:100%; margin-top:10px; background:#6c757d; cursor:not-allowed;" disabled>Incidente Cerrado</button>');  
+            }  
+        </script>  
+    </form>  
+  
+    <script>  
+        if ({{mostrarFormReabrir}}) {  
+            document.write('<hr><form method="POST" action="../Controllers/detalle_incidente_logica_responsable.php?id={{idIncidente}}" onsubmit="return confirm(\'¿Seguro que desea reabrir este incidente? Se habilitará la edición para corregir la información.\');"><input type="hidden" name="accion" value="reabrir"><input type="hidden" name="estado" value="En Proceso"><button type="submit" class="btn-reabrir">🔓 Reabrir Incidente </button></form>');  
+        }  
+    </script>  
+  
+    <br>  
+    <a class="btn" href="incidentes_asignados.php">Volver a Incidentes Asignados</a>  
+</div>  
+  
+<script>  
+function actualizarInterfaz() {  
+    const estado = document.getElementById('estadoSelector').value;  
+    const forzarResuelto = {{forzarSeccionResuelto}};  
+      
+    // Si está resuelto, siempre mostrar sección resuelto  
+    if (forzarResuelto) {  
+        document.querySelectorAll('.bloque-estado').forEach(div => div.style.display = 'none');  
+        document.getElementById('sec_resuelto').style.display = 'block';  
+        return;  
+    }  
+      
+    // Lógica normal para otros estados  
+    document.querySelectorAll('.bloque-estado').forEach(div => div.style.display = 'none');  
+  
+    if (estado === 'Pendiente') document.getElementById('sec_pendiente').style.display = 'block';  
+    if (estado === 'En Proceso') document.getElementById('sec_proceso').style.display = 'block';  
+    if (estado === 'No Resuelto') document.getElementById('sec_no_resuelto').style.display = 'block';  
+    if (estado === 'Resuelto') document.getElementById('sec_resuelto').style.display = 'block';  
+}  
+window.onload = actualizarInterfaz;  
+</script> 
+  
+</body>  
+</html>

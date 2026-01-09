@@ -1,0 +1,27 @@
+<!DOCTYPE html>  
+<html lang="es">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Mis Notificaciones</title>  
+    <link rel="stylesheet" href="/incidencias/assets/css/notificaciones.css">  
+</head>  
+<body>  
+  
+<div class="topbar">  
+    <div class="logo">Sistema de Incidencias</div>  
+    <div class="actions">  
+        <a href="panel_usuario.php" class="btn-volver">Volver al Panel</a>  
+        <a href="/incidencias/src/Controllers/logout.php" class="btn-logout">Cerrar sesión</a>  
+    </div>  
+</div>  
+  
+<div class="main-content">  
+    <h2>Centro de Notificaciones</h2>  
+  
+    <ul class="lista-notificaciones">  
+        {{listaNotificaciones}}  
+    </ul>  
+</div>  
+  
+</body>  
+</html>

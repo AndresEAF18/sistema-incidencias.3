@@ -1,0 +1,48 @@
+body {
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.login-container {
+    background-color: white;
+    padding: 40px 50px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 380px;
+    text-align: center;
+}
+
+.login-container h2 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #111418;
+}
+
+.mensaje-texto {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.registro-btn {
+    display: inline-block;
+    background-color: #111418;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.registro-btn:hover {
+    background-color: white;
+    color: #111418;
+    border: 1px solid #111418;
+}

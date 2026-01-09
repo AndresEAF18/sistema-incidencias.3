@@ -1,0 +1,136 @@
+<!DOCTYPE html>  
+<html lang="es">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Panel Usuario - Sistema de Incidencias</title>  
+    <link rel="stylesheet" href="/incidencias/assets/css/panel_usuario.css">  
+</head>  
+<body>  
+  
+<div class="topbar">  
+    <div class="logo">Sistema de Incidencias</div>  
+    <div class="actions">  
+        <a href="notificaciones.php" class="notif" style="position: relative;">  
+            <img src="/incidencias/assets/img/notificacion.png" alt="Notificaciones">  
+            <span id="badgeNotificaciones">{{notificacionesNoLeidas}}</span>  
+        </a>  
+        <a href="/incidencias/src/Controllers/logout.php" class="logout">  
+            Cerrar sesión  
+        </a>  
+    </div>  
+</div>  
+  
+<div class="layout">  
+    <div class="container">  
+        <div class="titulo-bienvenido">  
+            Bienvenido, {{nombre}}  
+        </div>  
+        <div class="separador"></div>  
+        <div class="botones-panel">  
+            <a class="btn-panel" href="registrar_incidente.php">  
+                <img src="/incidencias/assets/img/anadir.png">  
+                Registrar Incidente  
+            </a>  
+            <a class="btn-panel" href="historial_incidentes.php">  
+                <img src="/incidencias/assets/img/lista.png">  
+                Visualizar Historial  
+            </a>  
+        </div>  
+    </div>  
+  
+    <div class="card-container">  
+        <div class="card">  
+            <h3>Incidentes Reportados</h3>  
+            <p class="numero" style="color: #1417aa;">{{totalIncidentes}}</p>  
+        </div>  
+        <div class="card">  
+            <h3>Incidencias Resueltas</h3>  
+            <p class="numero" style="color: #2aaf2a;">{{totalResueltas}}</p>  
+        </div>  
+        <div class="card">  
+            <h3>Incidencias Pendientes</h3>  
+            <p class="numero" style="color: #e67e22;">{{totalPendientes}}</p>  
+        </div>  
+        <div class="card">  
+            <h3>Resolución</h3>  
+            <p class="numero" style="color: #222;">{{porcentajeResueltas}}%</p>  
+        </div>  
+    </div>  
+</div>  
+  
+<div class="panel-grafica-layout">  
+    <div class="mini-panel">  
+        <h3>Últimos incidentes reportados</h3>  
+        <table>  
+            <thead>  
+                <tr>  
+                    <th>Título</th>  
+                    <th>Estado</th>  
+                    <th>Fecha</th>  
+                </tr>  
+            </thead>  
+            <tbody>  
+                {{tablaIncidentes}}  
+            </tbody>  
+        </table>  
+        <div class="mini-panel-btn">  
+            <a href="historial_incidentes.php">Ver historial completo</a>  
+        </div>  
+    </div>  
+    <div class="graficas-layout">  
+        <div class="grafica-card">  
+            <h3>Incidencias por Categoría</h3>  
+            <canvas id="grafIncidencias"></canvas>  
+        </div>  
+        <div class="grafica-card adicionales">  
+            <h3>Comparativa Mensual</h3>  
+            <canvas id="grafMensual"></canvas>  
+        </div>  
+    </div>  
+</div>  
+  
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  
+<script>  
+    const ctxCat = document.getElementById('grafIncidencias').getContext('2d');  
+    new Chart(ctxCat, {  
+        type: 'bar',  
+        data: {  
+            labels: {{categorias}},  
+            datasets: [{  
+                label: 'Cantidad',  
+                data: {{valoresCategorias}},  
+                backgroundColor: 'rgba(29,184,171,0.7)',  
+                borderColor: 'rgba(29,184,171,1)',  
+                borderWidth: 1  
+            }]  
+        },  
+        options: {  
+            responsive: true,  
+            scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }  
+        }  
+    });  
+  
+    const ctxMes = document.getElementById('grafMensual').getContext('2d');  
+    new Chart(ctxMes, {  
+        type: 'line',  
+        data: {  
+            labels: {{meses}},  
+            datasets: [{  
+                label: 'Reportes',  
+                data: {{valoresMes}},  
+                backgroundColor: 'rgba(52, 152, 219, 0.2)',  
+                borderColor: 'rgba(52, 152, 219, 1)',  
+                borderWidth: 2,  
+                fill: true,  
+                tension: 0.3  
+            }]  
+        },  
+        options: {  
+            responsive: true,  
+            scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }  
+        }  
+    });  
+</script>  
+  
+</body>  
+</html>

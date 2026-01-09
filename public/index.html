@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Sistema de Incidencias</title>
+    <link rel="stylesheet" href="/incidencias/assets/css/inicio.css">
+</head>
+<body>
+    <h1 class="titulo-sistema">Sistema de Incidencias Hermanos Cristianos</h1>
+
+    <div class="login-container">
+        <h2>Iniciar Sesión</h2>
+        <form action="/incidencias/src/Controllers/login.php" method="POST">
+            <label>Correo:</label>
+            <input type="email" name="correo" required pattern=".+@hermanoscristianos\.com" placeholder="usuario@hermanoscristianos.com">
+
+            <label>Contraseña:</label>
+            <input type="password" name="contrasena" required>
+
+            <input type="submit" value="Iniciar Sesión">
+        </form>
+        
+        <p>¿No tienes cuenta? 
+            <a class="registro-btn" href="/incidencias/src/Views/registro_usuario.php">Registrarse como Usuario</a>
+        </p>
+    </div>
+</body>
+</html>

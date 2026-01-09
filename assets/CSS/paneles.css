@@ -1,0 +1,339 @@
+/* =============== GLOBAL =============== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
+
+body {
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    background: #f2f3f5;
+    color: #111418;
+}
+
+/* ============================================
+   TOPBAR
+=============================================== */
+.topbar {
+    width: 98%;
+    height: 90px;
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+    border-radius: 0 0 10px 10px;
+}
+
+.topbar .logo {
+    font-size: 32px;
+    font-weight: 800;
+    color: #222;
+}
+
+.topbar .actions {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+/* Icono notificación */
+.actions .notif img {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.actions .notif img:hover {
+    transform: scale(1.1);
+}
+
+/* Badge notificaciones */
+#badgeNotificaciones {
+    position: absolute;
+    top: -4px;
+    right: -10px;
+    background: #d32f2f;
+    color: #fff;
+    padding: 2px 6px;
+    font-size: 11px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    min-width: 17px;
+    height: 17px;
+}
+
+/* Botón cerrar sesión */
+.actions .logout {
+    background: #d32f2f;
+    color: #ffffff !important;
+    padding: 12px 22px;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.actions .logout:hover {
+    background: #b32525;
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   CONTENEDOR PRINCIPAL
+=============================================== */
+.container {
+    width: 100%;
+    max-width: 450px;
+    margin: 25px 25px;
+    padding: 28px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.titulo-bienvenido {
+    font-size: 34px;
+    font-weight: 900;
+    margin-bottom: 12px;
+}
+
+.separador {
+    width: 100%;
+    height: 1px;
+    background: #e2e8f0;
+    margin: 22px 0;
+}
+
+/* ============================================
+   BOTONES DEL PANEL
+=============================================== */
+.botones-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 12px;
+}
+
+.btn-panel {
+    background: #f1f3f6;
+    padding: 16px 20px;
+    border-radius: 14px;
+    font-size: 19px;
+    font-weight: 700;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.btn-panel img {
+    width: 40px;
+    height: 40px;
+}
+
+.btn-panel:hover {
+    background: #e1e3e6;
+    transform: translateX(4px);
+}
+
+/* ============================================
+   TARJETAS DE ESTADÍSTICAS
+=============================================== */
+.card-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: -300px;
+    flex-wrap: wrap;
+    margin-left: 500px;
+}
+
+.card {
+    width: 200px;
+    background: #ffffff;
+    padding: 28px;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    text-align: center;
+    transition: 0.25s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+}
+
+.card h3 {
+    margin: 0;
+     margin-top: 20px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #333;
+}
+
+.card .numero {
+    font-size: 55px;
+    font-weight: 900;
+    margin-top: 12px;
+}
+
+/* Paletas automáticas */
+.card:nth-child(1) .numero { color: #1417aaff; }
+.card:nth-child(2) .numero { color: #27ae60; }
+.card:nth-child(3) .numero { color: #e67e22; }
+
+
+
+/* ==============================
+   MINI PANEL + GRÁFICAS HORIZONTALES
+============================== */
+.panel-grafica-layout {
+    display: flex;
+    gap: 10px;               
+    margin: 50px 25px;
+    align-items: flex-start;  
+}
+
+/* Contenedor de gráficas en fila */
+.graficas-layout {
+    display: flex;
+    gap: 15px;               
+    flex-wrap: nowrap;        
+}
+
+/* Mini panel */
+/* Mini panel */
+.mini-panel {
+    width: 600px;             
+    padding: 25px;            
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* Tabla mini panel */
+.mini-panel table {
+    width: 100%;              /* ocupar todo el ancho del panel */
+    border-collapse: collapse;
+    font-size: 16px;          
+}
+
+.mini-panel th, .mini-panel td {
+    padding: 20px 25px;       /* más espacio horizontal y vertical */
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.mini-panel th {
+    background-color: #f1f3f6;
+    font-size: 17px;          
+}
+/* Contenedor del botón para alinearlo a la izquierda y separarlo */
+.mini-panel-btn {
+    margin-top: 25px;       /* espacio desde la tabla hacia el botón */
+    text-align: right;       /* alinea el botón a la izquierda */
+}
+
+/* Botón "Ver más" mini panel */
+.mini-panel-btn a {
+    display: inline-block;
+    background-color: #000;  
+    color: #fff;             
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.2s;
+    border: 2px solid transparent; 
+}
+
+.mini-panel-btn a:hover {
+    background-color: #fff;  
+    color: #000;             
+    border: 2px solid #000;  
+    transform: translateY(-2px);
+}
+
+/* Gráficas */
+.grafica-card {
+    width: 410px;             
+    padding: 25px;            
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* Canvas dentro de cada gráfica */
+.grafica-card canvas {
+    width: 100% !important;
+    height: 300px !important;  
+}
+
+
+
+/* ====== CONTENEDOR DE CONFIRMACIÓN ====== */
+.confirmacion {
+    max-width: 750px;            /* Aumenté el ancho */
+    margin: 80px auto;
+    background: #ffffff;
+    padding: 55px;               /* Más espacio interno */
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+    position: absolute;
+    top: 45%;                    /* Baja un poco más al centro */
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* TÍTULO */
+.confirmacion h1 {
+    font-size: 32px;             /* Más grande */
+    margin-bottom: 40px;
+    font-weight: 800;
+}
+
+/* BOTONES */
+.confirmacion button {
+    display: inline-block;
+    margin: 15px;
+    padding: 18px 40px;          /* Botones más grandes */
+    border: none;
+    cursor: pointer;
+    font-size: 20px;             /* Texto más grande */
+    border-radius: 10px;
+    transition: 0.3s;
+    font-weight: 700;
+}
+
+/* Botón Volver (negro → blanco en hover) */
+.confirmacion button:first-of-type {
+    background: #000;
+    color: #fff;
+}
+
+.confirmacion button:first-of-type:hover {
+    background: #fff;
+    color: #000;
+    border: 2px solid #000;
+}
+
+/* Botón Registrar Otro Incidente (rojo → blanco en hover) */
+.confirmacion button:last-of-type {
+    background: #d32f2f;
+    color: #fff;
+}
+
+.confirmacion button:last-of-type:hover {
+    background: #fff;
+    color: #d32f2f;
+    border: 2px solid #d32f2f;
+}

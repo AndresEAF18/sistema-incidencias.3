@@ -1,0 +1,126 @@
+/* =============== GLOBAL =============== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
+
+
+body {
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column; /* ahora el flujo es vertical */
+    align-items: center; /* centrar horizontalmente */
+    justify-content: center; /* centrar verticalmente */
+    padding: 20px 0; /* espacio superior e inferior */
+}
+
+
+/* TITULO DEL SISTEMA */
+.titulo-sistema {
+    font-family: "Inter", sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: #111418;
+    text-align: center;
+    margin-bottom: 50px; /* espacio entre título y login */
+}
+/* =============== CONTENEDOR LOGIN =============== */
+.login-container {
+    background-color: #ffffff;
+    padding: 30px 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* TITULO LOGIN */
+.login-container h2 {
+    font-size: 26px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 16px;
+    color: #111418;
+}
+
+/* LINEA SEPARADORA */
+.login-container .separador {
+    width: 100%;
+    height: 1px;
+    background: #e2e8f0;
+    margin: 12px 0;
+}
+
+/* FORMULARIO */
+.login-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.login-container label {
+    font-weight: 600;
+    color: #555;
+}
+
+/* INPUTS */
+.login-container input[type="email"],
+.login-container input[type="password"] {
+    padding: 12px 14px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    transition: 0.2s;
+}
+
+.login-container input[type="email"]:focus,
+.login-container input[type="password"]:focus {
+    outline: none;
+    border-color: #136dec;
+    box-shadow: 0 0 0 3px rgba(19,109,236,0.2);
+}
+
+/* BOTÓN SUBMIT - AHORA NEGRO */
+.login-container input[type="submit"] {
+    background-color: #111418;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px; /* espacio para icono si se agrega */
+    transition: 0.2s;
+}
+
+.login-container input[type="submit"]:hover {
+    background-color: #ffffff;
+    color: #111418;
+    border: 1px solid #111418;
+    transform: translateY(-2px);
+}
+
+/* TEXTO Y ENLACES */
+.login-container p {
+    text-align: center;
+    color: #555;
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+.login-container a.registro-btn {
+    color: #111418;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.login-container a.registro-btn:hover {
+    color: #555; /* un cambio sutil al pasar el mouse */
+    text-decoration: underline;
+}
