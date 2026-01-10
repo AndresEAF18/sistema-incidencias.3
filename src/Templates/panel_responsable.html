@@ -115,41 +115,47 @@
     });  
   
     // Eficiencia Global  
-    const eficiencia = {{eficienciaGlobal}};  
-    let color;  
-    if (eficiencia >= 100) {  
-        color = 'rgba(46, 204, 113, 0.9)';  
-    } else if (eficiencia >= 70) {  
-        color = 'rgba(241, 196, 15, 0.9)';  
-    } else {  
-        color = 'rgba(231, 76, 60, 0.9)';  
-    }  
-  
-    new Chart(document.getElementById('grafEficienciaGlobal'), {  
-        type: 'bar',  
-        data: {  
-            labels: ['Eficiencia Global'],  
-            datasets: [{  
-                data: [Math.min(eficiencia, 100)],  
-                backgroundColor: [color],  
-                borderRadius: 8  
-            }]  
-        },  
-        options: {  
-            responsive: true,  
-            scales: {  
-                y: {  
-                    beginAtZero: true,  
-                    max: 100,  
-                    ticks: {  
-                        callback: function(value) {  
-                            return value + '%';  
-                        }  
+    const eficiencia = parseFloat('{{eficienciaGlobal}}') || 0;
+let color;  
+if (eficiencia >= 100) {  
+    color = 'rgba(46, 204, 113, 0.9)';  
+} else if (eficiencia >= 70) {  
+    color = 'rgba(241, 196, 15, 0.9)';  
+} else {  
+    color = 'rgba(231, 76, 60, 0.9)';  
+}  
+
+new Chart(document.getElementById('grafEficienciaGlobal'), {  
+    type: 'bar',  
+    data: {  
+        labels: ['Eficiencia'], // Antes estaba vacío o mal definido
+        datasets: [{  
+            label: 'Porcentaje Actual', // ESTO QUITA EL UNDEFINED DEL TOOLTIP
+            data: [eficiencia],  
+            backgroundColor: [color],  
+            borderRadius: 8  
+        }]  
+    },  
+    options: {  
+        responsive: true,
+        plugins: {
+            legend: {
+                display: false // Esto quita el cuadro de arriba que suele decir "Undefined"
+            }
+        },
+        scales: {  
+            y: {  
+                beginAtZero: true,  
+                max: 100,  
+                ticks: {  
+                    callback: function(value) {  
+                        return value + '%';  
                     }  
                 }  
             }  
         }  
-    });  
+    }  
+});
 </script>  
   
 </body>  

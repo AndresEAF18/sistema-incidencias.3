@@ -11,6 +11,7 @@ $totalResueltas = 0;
 $totalPendientes = 0;
 $porcentajeResolucion = 0;
 
+
 // Asegurar que existe id en sesión
 $idResponsable = $_SESSION['id'] ?? null;
 

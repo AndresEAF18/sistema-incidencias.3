@@ -37,7 +37,8 @@ $datos = [
     'categorias' => json_encode($categorias ?? []),  
     'valoresCategorias' => json_encode($valoresCategorias ?? []),  
     'meses' => json_encode($meses ?? []),  
-    'valoresMes' => json_encode($valoresMes ?? [])  
+    'valoresMes' => json_encode($valoresMes ?? [])  ,
+    
 ];  
   
 // 5. Cargar y renderizar template  
