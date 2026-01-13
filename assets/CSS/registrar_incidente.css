@@ -110,27 +110,22 @@ input[type="submit"]:hover {
     transform: translateY(-2px);
 }
 
-/* ===== EVIDENCIA PERSONALIZADA ===== */
-.btn-evidencia {
-    display: inline-block;
-    background-color: #000;
-    color: #fff;
-    padding: 10px 18px;
-    border-radius: 10px;
-    font-weight: 700;
-    cursor: pointer;
-    border: 2px solid #000;
-    transition: all 0.3s ease;
-}
 
-.btn-evidencia:hover {
-    background-color: #fff;   /* blanco */
-    color: #000;              /* texto negro */
-}
-
-.nombre-archivo {
-    display: inline-block;
-    margin-left: 10px;
-    font-size: 14px;
-    color: #555;
+.btn-cancelar {  
+    display: block;  
+    text-align: center;  
+    color: #ffffff;  
+    background-color: #dc2626;  
+    padding: 12px 20px;  
+    border-radius: 10px;  
+    text-decoration: none;  
+    font-weight: 600;  
+    transition: all 0.3s ease;  
+    margin-top: 20px;  
+}  
+  
+.btn-cancelar:hover {  
+    background-color: #ffffff;  
+    color: #000000;  
+    border: 2px solid #dc2626;  
 }
