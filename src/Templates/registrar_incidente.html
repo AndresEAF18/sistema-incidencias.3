@@ -11,6 +11,17 @@
 </head>  
 <body>  
   
+
+<div class="topbar">    
+    <div class="logo">Sistema de Incidencias</div>    
+    <div class="actions">    
+        <a href="panel_usuario.php" class="btn-volver">Volver al Panel</a>    
+        <a href="historial_incidentes.php" class="btn-historial">Visualizar Historial</a>    
+        <a href="notificaciones.php" class="btn-notificaciones">Notificaciones</a>       
+    </div>    
+</div>    
+
+
 <form action="../Controllers/registrar_incidente_procesar.php"  
       method="POST"  
       enctype="multipart/form-data">  
@@ -43,8 +54,6 @@
     <input type="submit" value="Registrar Incidente">  
     <br>  
       
-    <br>  
-    <a href="panel_usuario.php" class="btn-cancelar">Cancelar y volver al Panel</a>
 </form>  
   
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>  

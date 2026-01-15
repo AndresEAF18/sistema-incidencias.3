@@ -7,10 +7,59 @@ body {
     font-family: "Inter", sans-serif;
     background: #f5f6f7;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: column; /* Apila Topbar arriba y Card abajo */
+    align-items: center;    /* Centra la tarjeta horizontalmente */
     min-height: 100vh;
+
+
 }
+
+/* Contenedor principal de la barra */
+.topbar {
+    width: 100%;             
+    box-sizing: border-box;  
+    height: 90px;
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    margin-bottom: 30px;     
+}
+
+.topbar .logo {
+    font-size: 32px;
+    font-weight: 1000;
+}
+
+.topbar .actions {
+    display: flex;         
+    flex-direction: row;   
+    gap: 20px;             
+}
+
+.topbar .actions a {
+    background: #111418;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s;
+    display: inline-block; 
+    white-space: nowrap;   
+}
+
+.topbar .actions a:hover {
+    background: white;
+    color: #111418;
+    border: 1px solid #111418;
+}
+
+
+
 
 .card {
     width: 70%;
